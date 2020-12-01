@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const en = require('react-intl/locale-data/en');
 const zh = require('react-intl/locale-data/zh');
@@ -53,17 +54,30 @@ function App() {
       <div class="navbar">
  
   <div class="dropdown">
-    <button class="dropbtn"
-    >Country 
+    <button class="dropbtn">Country : 
       {/* <i class="fa fa-caret-down"></i> */}
     </button>
-    <select onChange={onChangeLanguage} defaultValue={currentLocale}>
+    {/* <select onChange={onChangeLanguage} defaultValue={currentLocale}>
             {
                 localeList.map((locale,index)=>(
                   <option key={index} value={locale.code}>{locale.name}</option>
                 ))
             }
-        </select>
+        </select> */}
+         <Select
+         
+        style={{  color: "white"}}
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={currentLocale}
+          onChange={onChangeLanguage}
+        >
+          {
+                localeList.map((locale,index)=>(
+                  <option key={index} value={locale.code}>{locale.name}</option>
+                ))
+            }
+        </Select>
   </div> 
 </div>
         <h1><FormattedMessage id="dashboard.header" defaultMessage="Localization in Create React App"/></h1>
